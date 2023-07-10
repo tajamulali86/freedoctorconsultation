@@ -6,30 +6,31 @@ import PatientList from "@/components/listofpatients";
 import AddtoApi from "@/components/postapi";
 import Table from "@/components/table";
 
-export const getStaticProps = async () => {
-  try {
-    const res = await fetch("http://localhost:8000/api/patient");
-    const data = await res.json();
-    console.log(data)
-    return {
-      props: {
-        data: data || [], // Provide an empty array as a fallback if data is undefined
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching patient data:", error);
-    return {
-      props: {
-        data: [], // Provide an empty array as a fallback in case of an error
-      },
-    };
-  }
-};
 
-const dashboard=()=>{
-  
+// async function getData() {
+//   const res = await fetch('http://localhost:8000/api/patient')
+
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data')
+//   }
+ 
+//   return res.json()
+// }
+ 
+// export default async function Page() {
+//   const data = await getData()
+ 
+//   return <main></main>
+// }
+
+
+
+
+const dashboard= async()=>{
+  // const data = await getData()
+
   return( <>
-  <PatientList data={data}/>
+  <PatientList />
   {/* <PatientList2 data={responseData}/> */}
   <Table id="2"/>
   <Delete/>
