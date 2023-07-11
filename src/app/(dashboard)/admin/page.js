@@ -14,7 +14,7 @@ const dashboard= ()=>{
   // const data = await getData()
 
   return( <>
-  <PatientList />
+  {/* <PatientList  /> */}
   {/* <PatientList2 data={responseData}/> */}
   <Table id="17"/>
   <Delete/>

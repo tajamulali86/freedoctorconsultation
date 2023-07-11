@@ -1,10 +1,11 @@
+import PatientList from "@/components/listofpatients";
 import Services from "@/components/services";
 
 export default function Patient(){
     return(
 <>
-
-<Services/>
+<PatientList role="patients" />
+{/* <Services/> */}
 
 </>
     );

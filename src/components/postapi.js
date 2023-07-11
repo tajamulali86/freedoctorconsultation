@@ -1,15 +1,15 @@
 "use client"
 import { useState } from 'react';
-const isDoctor=true;
-const styler="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+const isDoctor = true;
+const styler = "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 function AddtoApi() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     role: '',
-    phone:'',
-    degree:'',
-    experiance:''
+    phone: '',
+    degree: '',
+    experiance: ''
 
   });
 
@@ -41,9 +41,9 @@ function AddtoApi() {
           name: '',
           email: '',
           role: '',
-          phone:'',
-    degree:'',
-    experiance:''
+          phone: '',
+          degree: '',
+          experiance: ''
 
         });
       } else {
@@ -85,47 +85,47 @@ function AddtoApi() {
         </label>
 
         <br />
-        {formData.role === 'doctors'? 
-        <label className='leading-7 text-sm text-gray-600'>
-          phone:
-          <input
-            type='text'
-            name='phone'
-            value={formData.phone}
-            onChange={handleInputChange}
-            className={`${styler}  ` }
-          />
-        </label>:""
+        {formData.role === 'doctors' ?
+          <label className='leading-7 text-sm text-gray-600'>
+            phone:
+            <input
+              type='text'
+              name='phone'
+              value={formData.phone}
+              onChange={handleInputChange}
+              className={`${styler}  `}
+            />
+          </label> : ""
         }
 
         <br />
-        {formData.role === 'doctors'? 
-        <label className='leading-7 text-sm text-gray-600'>
-          degree:
-          <input
-            type='text'
-            name='degree'
-            value={formData.degree}
-            onChange={handleInputChange}
-            className={`${styler} `}
-          />
-        </label>:
-        ""
+        {formData.role === 'doctors' ?
+          <label className='leading-7 text-sm text-gray-600'>
+            degree:
+            <input
+              type='text'
+              name='degree'
+              value={formData.degree}
+              onChange={handleInputChange}
+              className={`${styler} `}
+            />
+          </label> :
+          ""
         }
 
         <br />
-        { formData.role === 'doctors'?
-        <label className='leading-7 text-sm text-gray-600'>
-          experiance:
-          <input
-            type='text'
-            name='experiance'
-            value={formData.experiance}
-            onChange={handleInputChange}
-            className={`${styler} `}
-          />
-        </label>:""
-}
+        {formData.role === 'doctors' ?
+          <label className='leading-7 text-sm text-gray-600'>
+            experiance:
+            <input
+              type='text'
+              name='experiance'
+              value={formData.experiance}
+              onChange={handleInputChange}
+              className={`${styler} `}
+            />
+          </label> : ""
+        }
         <br />
         <label className='leading-7 text-sm text-gray-600'>Doctor or Patient</label>
         <div>
@@ -136,7 +136,7 @@ function AddtoApi() {
             value='doctors'
             checked={formData.role === 'doctors'}
             onChange={handleInputChange}
-            className='w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+            className='w-1/2 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
           />
           <label htmlFor='doctors'>Doctor</label>
           <br />
@@ -147,7 +147,7 @@ function AddtoApi() {
             value='patients'
             checked={formData.role === 'patients'}
             onChange={handleInputChange}
-            className='w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+            className='w-1/2 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
           />
           <label htmlFor='patients'>Patient</label>
           <br />
