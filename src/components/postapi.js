@@ -18,6 +18,7 @@ function AddtoApi() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
 
     try {
       const response = await fetch(`http://localhost:8000/api/patient`, {
@@ -32,6 +33,9 @@ function AddtoApi() {
         // Data added successfully
         // Perform any necessary actions or show a success messeage
         console.log('Data added successfully');
+        empty=()=>setFormData({
+          name: "",email:""
+        })
       } else {
         // Handle error case
         console.log('Failed to add data');
@@ -56,7 +60,7 @@ function AddtoApi() {
         </label>
      
         <br />
-        <button type="submit" className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg'>Add Data</button>
+        <button type="submit" className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' >Add Data</button>
       </form>
     </div>
   );
