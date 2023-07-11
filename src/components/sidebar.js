@@ -60,7 +60,7 @@ export default function Sidebar() {
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
             </svg>} />
 
-            <Sidelink href="/patient" linkto="Patient" svg={<svg
+            <Sidelink href="/patients" linkto="Patient" svg={<svg
               aria-hidden="true"
               className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               fill="currentColor"

@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const response = await fetch(`http://localhost:8000/api/patient/${id}`);
+//         const response = await fetch(`http://localhost:8000/api/patients/${id}`);
 //         const responseData = await response.json();
 //         setData(responseData);
 //         console.log(data);

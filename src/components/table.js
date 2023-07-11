@@ -8,7 +8,7 @@ import useSWR from "swr"
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function useUser (id) {
-  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/patient/${id}`, fetcher)
+  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/patients/${id}`, fetcher)
  
   return {
     user: data,

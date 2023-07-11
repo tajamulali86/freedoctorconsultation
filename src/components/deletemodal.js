@@ -93,7 +93,7 @@ import { useState } from "react";
 const Delete = ({name,id, onDelete}) => {
     const handleDelete = () => {
         // Call the server-side delete endpoint to remove the patient from the database
-        fetch(`http://localhost:8000/api/patient/${id}`, {
+        fetch(`http://localhost:8000/api/patients/${id}`, {
           method: 'DELETE',
         })
           .then((response) => {

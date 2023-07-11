@@ -2,7 +2,7 @@
 // import useSWR from 'swr';
 
 // function Profile() {
-//   const { data, error } = useSWR('http://localhost:8000/api/patient/2', fetch);
+//   const { data, error } = useSWR('http://localhost:8000/api/patients/2', fetch);
 // //   let aata=  data.json();
 //     console.log(data);
 //   if (error) return <div>failed to load</div>;
@@ -18,7 +18,7 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/patient/2');
+        const res = await fetch('http://localhost:8000/api/patients/2');
 
         if (!res.ok) {
           throw new Error('Failed to fetch data');
@@ -45,7 +45,7 @@ export default Profile;
 // import useSWR from 'swr';
 
 // function Profile() {
-//   const { data, error } = useSWR('http://localhost:8000/api/patient/2', fetch);
+//   const { data, error } = useSWR('http://localhost:8000/api/patients/2', fetch);
 //   console.log(data)
 //   if (error) return <div>Failed to load</div>;
 //   if (!data) return <div>Loading...</div>;
@@ -57,7 +57,7 @@ export default Profile;
 // import useSWR from 'swr';
 
 // function Profile() {
-//   const { data, error } = useSWR('http://localhost:8000/api/patient/2', fetch);
+//   const { data, error } = useSWR('http://localhost:8000/api/patients/2', fetch);
 
 //   if (error) return <div>Failed to load</div>;
 //   if (!data) return <div>Loading...</div>;
@@ -88,7 +88,7 @@ export default Profile;
 //   export async function getStaticProps() {
 //     // Call an external API endpoint to get posts.
 //     // You can use any data fetching library
-//     const res = await fetch('http://localhost:8000/api/patient/')
+//     const res = await fetch('http://localhost:8000/api/patients/')
 //     const posts = await res.json()
 //     console.log(posts)
 

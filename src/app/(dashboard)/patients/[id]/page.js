@@ -5,7 +5,7 @@ import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 function useUser(id) {
-  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/patient/${id}`, fetcher);
+  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/patients/${id}`, fetcher);
   console.log(data);
   return {
     user: data,
@@ -32,14 +32,14 @@ export default function DataPost(params) {
             src="https://dummyimage.com/720x600"
           />
           <div className="text-center lg:w-2/3 w-full">
-            <input type="text" className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900" value={user.name}>
+            <h1  className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900" >
               {user.name}
-            </input>
+            </h1>
             <p className="mb-8 leading-relaxed">
               {user.email}
             </p>
             <div className="flex justify-center">
-              <button onClick={() => fetch(`http://localhost:8000/api/patient/${id}`, {
+              <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
                 method: 'PUT', /* or PATCH */
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -52,7 +52,7 @@ export default function DataPost(params) {
             } className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
               EDIT
             </button>
-            <button onClick={() => fetch(`http://localhost:8000/api/patient/${id}`, {
+            <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
               method: 'DELETE',
             })
               .then(res => res.json())

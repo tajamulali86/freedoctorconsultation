@@ -5,7 +5,8 @@ import { useState } from 'react';
 function AddtoApi() {
   const [formData, setFormData] = useState({
     name: '',
-    email: ''
+    email: '',
+    role:'',
   });
   
 
@@ -21,7 +22,7 @@ function AddtoApi() {
   
 
     try {
-      const response = await fetch(`http://localhost:8000/api/patient`, {
+      const response = await fetch(`http://localhost:8000/api/patients`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -60,6 +61,16 @@ function AddtoApi() {
         </label>
      
         <br />
+        <label className='leading-7 text-sm text-gray-600'>
+Doctor or Patient        
+        </label>
+        <div>
+         <input type="radio" id="html" name="role" value="doctors" className='w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'/>
+ <label htmlFor="html">Doctor</label><br/>
+ <input type="radio" id="css" name="role" value="patients" className='w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'/>
+ <label htmlForfor="css">Patient</label><br/>
+     <br/>
+     </div>
         <button type="submit" className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' >Add Data</button>
       </form>
     </div>
