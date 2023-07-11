@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react';
-const isDoctor = true;
+// const isDoctor = true;
 const styler = "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-function AddtoApi() {
+function EditDetails() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -127,7 +127,7 @@ function AddtoApi() {
           </label> : ""
         }
         <br />
-        <label className='leading-7 text-sm text-gray-600'>Doctor or Patient</label>
+        {/* <label className='leading-7 text-sm text-gray-600'>Doctor or Patient</label>
         <div>
           <input
             type='radio'
@@ -136,9 +136,9 @@ function AddtoApi() {
             value='doctors'
             checked={formData.role === 'doctors'}
             onChange={handleInputChange}
-            className='w-1/6 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out'
+            className='w-1/2 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
           />
-          <label htmlFor='doctors' className='text-gray-600'>Doctor</label>
+          <label htmlFor='doctors'>Doctor</label>
           <br />
           <input
             type='radio'
@@ -147,12 +147,12 @@ function AddtoApi() {
             value='patients'
             checked={formData.role === 'patients'}
             onChange={handleInputChange}
-            className='w-1/6 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out'
+            className='w-1/2 bg-white rounded border border-gray-300  focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
           />
-          <label htmlFor='patients' className='text-gray-600'>Patient</label>
+          <label htmlFor='patients'>Patient</label>
           <br />
           <br />
-        </div>
+        </div> */}
         <button
           type='submit'
           className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg'

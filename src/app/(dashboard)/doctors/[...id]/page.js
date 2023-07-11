@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
 
@@ -39,26 +40,16 @@ export default function DataPost(params) {
               {user.email}
             </p>
             <div className="flex justify-center">
-              <button onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
-                method: 'PUT', /* or PATCH */
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  name: 'iPhone Galaxy +1',
-                  email:"iphioenasdjkfnasdm,f"
-                })
-              })
-                .then(res => res.json())
-                .then(console.log)
-            } className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+            <Link href={`/doctor/${id}/edit`}> <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
               EDIT
-            </button>
-            <button onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
+            </button></Link> 
+             <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"  onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
               method: 'DELETE',
             })
               .then(res => res.json())
-              .then(console.log)} className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+              .then(console.log)} >
               DELETE
-            </button>
+              </button>
           </div>
         </div>
       </div>
