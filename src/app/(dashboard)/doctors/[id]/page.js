@@ -15,11 +15,14 @@ function useUser(id) {
   };
 }
 
+
 export default function DataPost(params) {
   const id = params.params.id;
   const { user, isLoading, isError } = useUser(id);
   console.log(user);
-
+  function editme(id){
+    console.log(id);
+    }
   if (isLoading) return <div>...loading</div>;
   if (isError) return <div>...error</div>;
 
@@ -40,14 +43,16 @@ export default function DataPost(params) {
               {user.email}
             </p>
             <div className="flex justify-center">
-            <Link href={`/doctor/${id}/edit`}> <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+            <Link href={`/doctors/${user.id}/edit` }><button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>editme(user.id)} >
               EDIT
-            </button></Link> 
+            </button></Link>
              <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"  onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
               method: 'DELETE',
             })
               .then(res => res.json())
-              .then(console.log)} >
+              .then(console.log).then(alert(`${user.name} deleted`)
+              )
+              } >
               DELETE
               </button>
           </div>

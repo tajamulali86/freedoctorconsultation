@@ -6,6 +6,10 @@ export const metadata = {
     description: 'Free doctor consultation',
 }
 
+
+
+
+
 export default function DashLayout({ children }) {
     return (
         <><div className="flex">

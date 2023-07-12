@@ -24,7 +24,7 @@ export default function AboutusPage(){
     </div>
   </div>
 
-    <Table id="3" />
+    <Table id="17" />
    
  
 </section></>
