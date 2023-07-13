@@ -1,4 +1,5 @@
 "use client"
+import { redirect } from "next/navigation"
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
@@ -40,7 +41,7 @@ export default function DataPost(params) {
               {user.name}
             </h1>
             <p className="mb-8 leading-relaxed">
-              {user.email}
+              {user.email} 
             </p>
             <div className="flex justify-center">
             <Link href={`/doctors/${user.id}/edit` }><button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>editme(user.id)} >
@@ -51,7 +52,7 @@ export default function DataPost(params) {
             })
               .then(res => res.json())
               .then(console.log).then(alert(`${user.name} deleted`)
-              )
+              ).then(redirect("/doctors") )
               } >
               DELETE
               </button>

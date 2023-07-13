@@ -2,6 +2,8 @@
 import React from "react";
 import useSWR from "swr";
 
+import Link from "next/link";
+
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 function useUser(id) {
@@ -39,19 +41,9 @@ export default function DataPost(params) {
               {user.email}
             </p>
             <div className="flex justify-center">
-              <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
-                method: 'PUT', /* or PATCH */
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  name: 'iPhone Galaxy +1',
-                  email:"iphioenasdjkfnasdm,f"
-                })
-              })
-                .then(res => res.json())
-                .then(console.log)
-            } className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+            <Link href={`/patients/${user.id}/edit` }><button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>editme(user.id)} >
               EDIT
-            </button>
+            </button></Link>
             <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
               method: 'DELETE',
             })
