@@ -164,4 +164,4 @@ function EditDetails() {
   );
 }
 
-export default AddtoApi;
+export default EditDetails;

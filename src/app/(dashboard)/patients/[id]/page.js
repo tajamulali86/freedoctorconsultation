@@ -47,13 +47,13 @@ export default function DataPost(params) {
             <Link href={`/patients/${user.id}/edit` }><button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>editme(user.id)} >
               EDIT
             </button></Link>
-            <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
+          <Link href={'/patients'} > <button onClick={() => fetch(`http://localhost:8000/api/patients/${id}`, {
               method: 'DELETE',
             })
               .then(res => res.json())
-              .then(console.log)} className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+              .then(console.log).then(alert(`${user.name} deleted`))} className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
               DELETE
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

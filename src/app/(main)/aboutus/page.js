@@ -1,5 +1,4 @@
 import AddtoApi from "@/components/postapi";
-import Table from "@/components/table";
 
 
 
@@ -24,7 +23,7 @@ export default function AboutusPage(){
     </div>
   </div>
 
-    <Table id="17" />
+   
    
  
 </section></>

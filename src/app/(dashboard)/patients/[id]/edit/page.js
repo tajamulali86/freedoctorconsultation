@@ -1,6 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import { useRouter } from 'next/router'
+
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
@@ -21,6 +23,13 @@ function EditDetails(params) {
     email: '',
   });
 
+//   let router=useRouter
+//   useEffect(()=> {
+
+//     router.push("/patients")
+//     console.log(response.ok);
+//   },[response.ok])
+
   useEffect(() => {
     if (user) {
       setFormData({
@@ -30,31 +39,36 @@ function EditDetails(params) {
     }
   }, [user]);
 
+  
+  
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+      setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+    };
     
+    const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const url = `http://localhost:8000/api/patients/${id}`;
       const response = await fetch(url, {
-        method: 'PUT',
+          method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log('Data updated successfully');
+    });
+    
+    
+    if (response.ok) {
+        alert('Data updated successfully');
+        // router.push("/patients")
+        // let router=useRouter()
+     
         // Perform any necessary actions or show a success message
       } else {
-        console.log('Failed to update data');
+        alert('Failed to update data');
         // Handle error case
       }
     } catch (error) {
@@ -94,7 +108,7 @@ function EditDetails(params) {
         <br />
         <button
           type='submit'
-          className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg'
+          className='text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' 
         >
           Update Data
         </button>
