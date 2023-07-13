@@ -15,6 +15,9 @@ function useUser(id) {
     isError: error
   };
 }
+function editme(id){
+  console.log(id);
+  }
 
 export default function DataPost(params) {
   const id = params.params.id;
