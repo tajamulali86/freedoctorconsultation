@@ -90,16 +90,16 @@
 import { useState } from "react";
 
 
-const Delete = ({name,id, onDelete}) => {
+const Delete = ({name,id, onDelete ,role}) => {
     const handleDelete = () => {
         // Call the server-side delete endpoint to remove the patient from the database
-        fetch(`http://localhost:8000/api/patients/${id}`, {
+        fetch(`http://localhost:8000/api/${role}/${id}`, {
           method: 'DELETE',
         })
           .then((response) => {
             if (response.ok) {
               // Call the parent component's onDelete callback to remove the patient from the UI
-              onDelete(id);
+            //   onDelete(id);
               alert(`patient ${name} deleted`)
 
             } else {

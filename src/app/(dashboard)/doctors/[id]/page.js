@@ -3,11 +3,15 @@ import { redirect } from "next/navigation"
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
+import Delete from "@/components/deletemodal";
+
+const role="doctors"
+
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 function useUser(id) {
-  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/doctors/${id}`, fetcher);
+  const { data, error, isLoading } = useSWR(`http://localhost:8000/api/${role}/${id}`, fetcher);
   console.log(data);
   return {
     user: data,
@@ -44,10 +48,12 @@ export default function DataPost(params) {
               {user.email} 
             </p>
             <div className="flex justify-center">
-            <Link href={`/doctors/${user.id}/edit` }><button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>editme(user.id)} >
-              EDIT
-            </button></Link>
-             <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"  onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
+           
+            <Link href={`/${role}/${user.id}/edit`}><button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-sky-400 group-hover:from-blue-500 group-hover:to-sky-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800" onClick={() => editme(user.id)} >
+             <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">  EDIT  </span>   
+              </button></Link>
+
+             {/* <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"  onClick={() => fetch(`http://localhost:8000/api/doctors/${id}`, {
               method: 'DELETE',
             })
               .then(res => res.json())
@@ -55,7 +61,8 @@ export default function DataPost(params) {
               ).then(redirect("/doctors") )
               } >
               DELETE
-              </button>
+              </button> */}
+              <Delete role={role} id={id} name={user.name} />
           </div>
         </div>
       </div>
