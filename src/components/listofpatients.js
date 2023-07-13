@@ -1,11 +1,12 @@
 "use client"
-
+import download  from 'downloadjs';
 import Delete from './deletemodal';
 import Editinfo from './editmodal';
 import Link from 'next/link';
 import { unstable_serialize } from 'swr'
 import { unstable_serialize as infinite_unstable_serialize } from 'swr/infinite'
 import useSWR from "swr"
+import Image from 'next/image';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -120,10 +121,16 @@ function PatientList({role}) {
                  ID
               </th>
               <th scope="col" className="px-6 py-3">
+                 Picture
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Name
               </th>
               <th scope="col" className="px-6 py-3">
                 Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                File
               </th>
               {role=="doctors"?<>
               <th scope="col" className="px-6 py-3">
@@ -144,7 +151,10 @@ function PatientList({role}) {
             </tr>
           </thead>
           <tbody>{
-            user.map((item) => (
+            user.map((item) => 
+           
+            (
+              
 
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.id} onDelete={item.className = "hidden"}>
                 <th
@@ -154,7 +164,27 @@ function PatientList({role}) {
                   {item.id}
                 </th>
                 <td className="px-6 py-4">{item.name}</td>
+                <td className="px-6 py-4">  <a
+    href={`http://localhost:8000/storage/${item.profileimg}`}
+   target='_blank'
+  >
+   <img
+  src={`http://localhost:8000/storage/${item.profileimg}`}
+  width={100}
+  height={100}
+  alt='profile'/>
+  </a>
+  
+  </td>
                 <td className="px-6 py-4">{item.email}</td>
+                <td className="px-6 py-4">
+  <a
+    href={`http://localhost:8000/storage/${item.file_path}`}
+   target='_blank'
+  >
+    Download
+  </a>
+</td>
                 {role=="doctors"?<>
                 <td className="px-6 py-4">{item.phone}</td>
                 <td className="px-6 py-4">{item.degree}</td>
