@@ -242,14 +242,14 @@ role==="doctors"?
       });
 
       if (response.ok) {
-        console.log('Data updated successfully');
+        alert('Data updated successfully');
         // Perform any necessary actions or show a success message
       } else {
-        console.log('Failed to update data');
+        alert('Failed to update data');
         // Handle error case
       }
     } catch (error) {
-      console.error('Error:', error);
+     alert('Error:', error);
     }
   };
 

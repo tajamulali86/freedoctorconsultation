@@ -164,7 +164,10 @@ function PatientList({role}) {
                   {item.id}
                 </th>
                 <td className="px-6 py-4">{item.name}</td>
-                <td className="px-6 py-4">  <a
+                <td className="px-6 py-4"> 
+                
+                {item.profileimg?
+                 <a
     href={`http://localhost:8000/storage/${item.profileimg}`}
    target='_blank'
   >
@@ -173,8 +176,18 @@ function PatientList({role}) {
   width={100}
   height={100}
   alt='profile'/>
-  </a>
-  
+  </a>:
+   <a
+   href={`/images/images.png`}
+  target='_blank'
+ >
+  <img
+ src={`/images/images.png`}
+ width={100}
+ height={100}
+ alt='profile'/>
+ </a>
+}
   </td>
                 <td className="px-6 py-4">{item.email}</td>
                 <td className="px-6 py-4">
@@ -182,7 +195,11 @@ function PatientList({role}) {
     href={`http://localhost:8000/storage/${item.file_path}`}
    target='_blank'
   >
-    Download
+  <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                     View  file
+                    </span>
+                  </button>
   </a>
 </td>
                 {role=="doctors"?<>
