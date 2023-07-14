@@ -38,7 +38,7 @@ export default function Profile({params,role}) {
           <img
             className=" object-cover object-center rounded "
             alt="hero"
-            src={user.file_path?`http://localhost:8000/storage/${role=="patients"?user.profileimg:user.file_path}`:'/images/images.png'}
+            src={user.profileimg?`http://localhost:8000/storage/${user.profileimg}`:'/images/images.png'}
             width={200}
             height={200}
             
