@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
 import Delete from "@/components/deletemodal";
+import Spinner from "@/components/spinner";
 
 const role="doctors"
 
@@ -28,7 +29,7 @@ export default function DataPost(params) {
   function editme(id){
     console.log(id);
     }
-  if (isLoading) return <div>...loading</div>;
+  if (isLoading) return <div><Spinner/></div>;
   if (isError) return <div>...error</div>;
 
   return (

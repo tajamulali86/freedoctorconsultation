@@ -5,6 +5,7 @@ import useSWR from "swr";
 import Link from "next/link";
 import Delete from "@/components/deletemodal";
 import Image from "next/image";
+import Spinner from "@/components/spinner";
 
 const role="patients"
 const fetcher = (...args) => fetch(...args).then(res => res.json());
@@ -27,7 +28,7 @@ export default function DataPost(params) {
   const { user, isLoading, isError } = useUser(id);
   console.log(user);
 
-  if (isLoading) return <div>...loading</div>;
+  if (isLoading) return <div><Spinner/></div>;
   if (isError) return <div>...error</div>;
 
   return (
@@ -61,6 +62,12 @@ export default function DataPost(params) {
 </button>
   </a>
             </p>
+
+            <p className="mb-8 leading-relaxed">
+              {user.created_at}
+            </p>
+
+
             <div className="flex justify-center">
               <Link href={`/${role}/${user.id}/edit`}><button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-sky-400 group-hover:from-blue-500 group-hover:to-sky-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800" onClick={() => editme(user.id)} >
              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">  EDIT  </span>   

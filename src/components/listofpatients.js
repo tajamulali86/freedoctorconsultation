@@ -7,6 +7,7 @@ import { unstable_serialize } from 'swr'
 import { unstable_serialize as infinite_unstable_serialize } from 'swr/infinite'
 import useSWR from "swr"
 import Image from 'next/image';
+import Spinner from './spinner';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -34,7 +35,7 @@ function PatientList({role}) {
 
   if (isLoading) return (<div>
 
-    <div className="relative overflow-x-auto  ">
+    {/* <div className="relative overflow-x-auto animate-pulse ">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -102,8 +103,8 @@ function PatientList({role}) {
             </tr>
         </tbody>
       </table>
-    </div>
-
+    </div> */}
+<Spinner/>
 
 
   </div>);
@@ -113,7 +114,7 @@ function PatientList({role}) {
   return (
     <div>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto ">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -121,10 +122,10 @@ function PatientList({role}) {
                  ID
               </th>
               <th scope="col" className="px-6 py-3">
-                 Picture
+                Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Name
+                 Picture
               </th>
               <th scope="col" className="px-6 py-3">
                 Email

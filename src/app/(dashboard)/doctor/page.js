@@ -2,6 +2,7 @@
 import SingleDoctor from "@/components/singleDoctor";
 import doc from "../../../../public/images/doc3.jpg"
 import useSWR from "swr"
+import Spinner from "@/components/spinner";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -11,7 +12,10 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
     const { data, error, isLoading } = useSWR('http://localhost:8000/api/doctors/1', fetcher)
 
     if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
+    if (isLoading) return <div>
+
+      <Spinner/>
+    </div>
    console.log(data);
       return(
         <>

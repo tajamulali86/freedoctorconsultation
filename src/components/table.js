@@ -3,6 +3,7 @@
 
 
 import useSWR from "swr"
+import Spinner from "./spinner"
 // import { useEffect, useState } from 'react';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -22,7 +23,7 @@ function Table({id}) {
   const { user, isLoading, isError } = useUser(id)
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><Spinner/></div>;
   }
   if(isError)
   return <div>error</div>

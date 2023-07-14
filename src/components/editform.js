@@ -174,6 +174,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import Spinner from './spinner';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
@@ -253,7 +254,7 @@ role==="doctors"?
     }
   };
 
-  if (isLoading) return <div>...loading</div>;
+  if (isLoading) return <div><Spinner/></div>;
   if (isError) return <div>Error occurred while fetching user data.</div>;
 
   return (
