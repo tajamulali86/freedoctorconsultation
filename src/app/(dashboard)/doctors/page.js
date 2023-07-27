@@ -1,4 +1,5 @@
 import PatientList from "@/components/listofpatients";
+import Strapi from "@/components/strapitest";
 
 export default function doctors(){
     return(
@@ -17,9 +18,9 @@ export default function doctors(){
   </div>
 </div>
 
-<PatientList role="doctors"/>
+{/* <PatientList role="doctors"/> */}
 {/* <Services/> */}
-
+<Strapi role="doctors"/>
 </>
     );
 }

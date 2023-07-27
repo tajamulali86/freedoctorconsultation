@@ -4,12 +4,12 @@ import useSWR from "swr";
 import Spinner from './spinner';
 import { useState } from 'react';
 
-const baseURL="http://localhost:8000"
+const baseurl="http://localhost:1337"
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 function useUser({ role }) {
-  const { data, error, isLoading } = useSWR(`${baseURL}/api/${role}`, fetcher)
+  const { data, error, isLoading } = useSWR(`${baseurl}/api/${role}?populate=*`, fetcher)
 
   return {
     user: data,
@@ -18,7 +18,7 @@ function useUser({ role }) {
   }
 }
 
-function PatientList({ role }) {
+function Strapi({ role }) {
 
   const [page, setPage] = useState(1);
   const perPage = 10;
@@ -31,7 +31,8 @@ function PatientList({ role }) {
 
   const startIndex = (page - 1) * perPage;
   const endIndex = startIndex + perPage;
-  const displayedUsers = user.slice(startIndex, endIndex);
+  console.log(user.data[3]);
+  const displayedUsers = user.data.slice(startIndex, endIndex);
 
   return (
     <>
@@ -51,9 +52,7 @@ function PatientList({ role }) {
               <th scope="col" className="px-6 py-3">
                 Email
               </th>
-              <th scope="col" className="px-6 py-3">
-                File
-              </th>
+             
               {role == "doctors" && <>
                 <th scope="col" className="px-6 py-3">
                   Phone
@@ -73,25 +72,26 @@ function PatientList({ role }) {
             </tr>
           </thead>
           <tbody>{
+            
             displayedUsers .map((item) =>
             (
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.id} onDelete={item.className = "hidden"}>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.attributes.id} onDelete={item.className = "hidden"}>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {item.id}
                 </th>
-                <td className="px-6 py-4">{item.name}</td>
+                <td className="px-6 py-4">{item.attributes.Name}</td>
                 <td className="px-6 py-4">
-
-                  {item.profileimg ?
+                 {item.attributes.profilepic.data!=null ?
                     <a
-                      href={`${baseURL}/storage/${item.profileimg}`}
+                      href={`http://localhost:8000/storage/${item.profileimg}`}
                       target='_blank'
                     >
                       <img
-                        src={`${baseURL}/storage/${item.profileimg}`}
+                        src={`${baseurl}${item.attributes.profilepic.data.attributes.url}`
+                             }
                         width={100}
                         height={100}
                         alt='profile' />
@@ -108,10 +108,10 @@ function PatientList({ role }) {
                     </a>
                   }
                 </td>
-                <td className="px-6 py-4">{item.email}</td>
-                <td className="px-6 py-4">
+                 <td className="px-6 py-4">{item.attributes.email}</td>
+                {/* {/* <td className="px-6 py-4">
                   <a
-                    href={`${baseURL}/storage/${item.file_path}`}
+                    href={`http://localhost:8000/storage/${item.file_path}`}
                     target='_blank'
                   >
                     <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
@@ -120,11 +120,11 @@ function PatientList({ role }) {
                       </span>
                     </button>
                   </a>
-                </td>
+                </td> */}
                 {role == "doctors" &&<>
-                  <td className="px-6 py-4">{item.phone}</td>
-                  <td className="px-6 py-4">{item.degree}</td>
-                  <td className="px-6 py-4">{item.experiance}</td></>
+                  <td className="px-6 py-4">{item.attributes.number}</td>
+                  <td className="px-6 py-4">{item.attributes.qualification}</td>
+                  <td className="px-6 py-4">{item.attributes.experiance}</td></>
                 }
                 <td className="py-4">
 
@@ -134,8 +134,8 @@ function PatientList({ role }) {
                     </span>
                   </button></Link>
     
-                </td>
-              </tr>))}
+            </td>
+              </tr>))} 
           </tbody>
         </table>
         
@@ -163,5 +163,5 @@ function PatientList({ role }) {
   );
 }
 
-export default PatientList;
+export default Strapi;
 

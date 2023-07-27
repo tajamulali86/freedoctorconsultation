@@ -8,6 +8,7 @@ import Image from "next/image";
 import Spinner from "@/components/spinner";
 
 
+
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 function useUser(id,role) {

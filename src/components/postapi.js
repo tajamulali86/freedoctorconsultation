@@ -85,7 +85,7 @@ function AddtoApi() {
         </label>
 
         <br />
-        {formData.role === 'doctors' ?
+        {formData.role === 'doctors' &&<>
           <label className='leading-7 text-sm text-gray-600'>
             phone:
             <input
@@ -95,11 +95,11 @@ function AddtoApi() {
               onChange={handleInputChange}
               className={`${styler}  `}
             />
-          </label> : ""
-        }
+          </label> 
+        
 
         <br />
-        {formData.role === 'doctors' ?
+      
           <label className='leading-7 text-sm text-gray-600'>
             degree:
             <input
@@ -109,12 +109,11 @@ function AddtoApi() {
               onChange={handleInputChange}
               className={`${styler} `}
             />
-          </label> :
-          ""
-        }
+          </label> 
+        
 
         <br />
-        {formData.role === 'doctors' ?
+       
           <label className='leading-7 text-sm text-gray-600'>
             experiance:
             <input
@@ -124,8 +123,8 @@ function AddtoApi() {
               onChange={handleInputChange}
               className={`${styler} `}
             />
-          </label> : ""
-        }
+          </label> 
+       </> }
         <br />
         <label className='leading-7 text-sm text-gray-600'>Doctor or Patient</label>
         <div>
